@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ScrollPane?>
+
+<StackPane styleClass="auth-container" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="com.eventticketing.controller.RegisterController">
+    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" maxHeight="620">
+    <VBox styleClass="auth-card" maxWidth="380" alignment="CENTER" spacing="12">
+        <Label text="🎟" style="-fx-font-size: 32px;"/>
+        <Label text="Create your account" styleClass="auth-title"/>
+
+        <VBox spacing="6">
+            <Label text="Full Name"/>
+            <TextField fx:id="nameField" promptText="Juan Dela Cruz"/>
+        </VBox>
+        <VBox spacing="6">
+            <Label text="Email"/>
+            <TextField fx:id="emailField" promptText="you@example.com"/>
+        </VBox>
+        <VBox spacing="6">
+            <Label text="Phone"/>
+            <TextField fx:id="phoneField" promptText="09XXXXXXXXX"/>
+        </VBox>
+        <VBox spacing="6">
+            <Label text="Password"/>
+            <PasswordField fx:id="passwordField" promptText="••••••••"/>
+        </VBox>
+        <VBox spacing="6">
+            <Label text="Confirm Password"/>
+            <PasswordField fx:id="confirmPasswordField" promptText="••••••••"/>
+        </VBox>
+
+        <Label fx:id="errorLabel" styleClass="error-text" wrapText="true" managed="false" visible="false"/>
+
+        <Button text="Register" styleClass="btn-primary" maxWidth="Infinity" onAction="#handleRegister"/>
+        <Button text="Already have an account? Login" styleClass="btn-link" onAction="#goToLogin"/>
+    </VBox>
+    </ScrollPane>
+</StackPane>

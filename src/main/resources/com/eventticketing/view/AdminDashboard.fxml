@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.eventticketing.controller.AdminDashboardController">
+    <top>
+        <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="10">
+            <Label text="🎟 Event Ticketing System — Admin" styleClass="app-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="userLabel" styleClass="user-label"/>
+            <Button text="Logout" styleClass="nav-button" onAction="#handleLogout"/>
+        </HBox>
+    </top>
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+
+            <!-- ===================== MANAGE EVENTS ===================== -->
+            <Tab text="Manage Events">
+                <BorderPane style="-fx-padding: 16;">
+                    <top>
+                        <VBox spacing="12" styleClass="card">
+                            <Label text="Add New Event" styleClass="section-title"/>
+                            <HBox spacing="10">
+                                <TextField fx:id="eventTitleField" promptText="Event title" HBox.hgrow="ALWAYS"/>
+                                <ComboBox fx:id="eventCategoryCombo" promptText="Category" prefWidth="160"/>
+                                <ComboBox fx:id="eventVenueCombo" editable="true" promptText="Venue (pick or type new)" prefWidth="220"/>
+                            </HBox>
+                            <HBox spacing="10">
+                                <DatePicker fx:id="eventDatePicker" promptText="Date"/>
+                                <TextField fx:id="eventTimeField" promptText="HH:MM (24h)" prefWidth="100"/>
+                                <TextField fx:id="eventSeatsField" promptText="Total seats" prefWidth="110"/>
+                                <TextField fx:id="eventPriceField" promptText="Price per seat" prefWidth="120"/>
+                            </HBox>
+                            <TextArea fx:id="eventDescField" promptText="Description" prefRowCount="2" wrapText="true"/>
+                            <HBox spacing="10" alignment="CENTER_RIGHT">
+                                <Label fx:id="eventFormStatus" styleClass="error-text" managed="false" visible="false"/>
+                                <Button text="Add Event" styleClass="btn-primary" onAction="#handleAddEvent"/>
+                            </HBox>
+                        </VBox>
+                    </top>
+                    <center>
+                        <TableView fx:id="eventsTable" style="-fx-padding: 16 0 0 0;">
+                            <columns>
+                                <TableColumn fx:id="colEventId" text="ID" prefWidth="50"/>
+                                <TableColumn fx:id="colEventTitle" text="Title" prefWidth="220"/>
+                                <TableColumn fx:id="colEventDate" text="Date" prefWidth="150"/>
+                                <TableColumn fx:id="colEventVenue" text="Venue" prefWidth="160"/>
+                                <TableColumn fx:id="colEventCategory" text="Category" prefWidth="110"/>
+                                <TableColumn fx:id="colEventSeats" text="Seats Avail." prefWidth="90"/>
+                                <TableColumn fx:id="colEventActions" text="Actions" prefWidth="90"/>
+                            </columns>
+                        </TableView>
+                    </center>
+                </BorderPane>
+            </Tab>
+
+            <!-- ===================== MANAGE CATEGORIES ===================== -->
+            <Tab text="Manage Categories">
+                <VBox spacing="14" style="-fx-padding: 16;">
+                    <VBox spacing="10" styleClass="card">
+                        <Label text="Add Category" styleClass="section-title"/>
+                        <HBox spacing="10">
+                            <TextField fx:id="categoryNameField" promptText="Category name" HBox.hgrow="ALWAYS"/>
+                            <TextField fx:id="categoryDescField" promptText="Description" HBox.hgrow="ALWAYS"/>
+                            <Button text="Add" styleClass="btn-primary" onAction="#handleAddCategory"/>
+                        </HBox>
+                    </VBox>
+                    <TableView fx:id="categoriesTable">
+                        <columns>
+                            <TableColumn fx:id="colCatId" text="ID" prefWidth="60"/>
+                            <TableColumn fx:id="colCatName" text="Name" prefWidth="200"/>
+                            <TableColumn fx:id="colCatDesc" text="Description" prefWidth="350"/>
+                            <TableColumn fx:id="colCatActions" text="Actions" prefWidth="90"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- ===================== MANAGE USERS ===================== -->
+            <Tab text="Manage Users">
+                <VBox spacing="14" style="-fx-padding: 16;">
+                    <Label text="Registered Customers" styleClass="section-title"/>
+                    <TableView fx:id="usersTable">
+                        <columns>
+                            <TableColumn fx:id="colUserId" text="ID" prefWidth="60"/>
+                            <TableColumn fx:id="colUserName" text="Name" prefWidth="180"/>
+                            <TableColumn fx:id="colUserEmail" text="Email" prefWidth="220"/>
+                            <TableColumn fx:id="colUserPhone" text="Phone" prefWidth="140"/>
+                            <TableColumn fx:id="colUserActions" text="Actions" prefWidth="90"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- ===================== BOOKINGS / REPORTS ===================== -->
+            <Tab text="Bookings &amp; Reports">
+                <VBox spacing="14" style="-fx-padding: 16;">
+                    <HBox spacing="20">
+                        <VBox styleClass="card" alignment="CENTER" prefWidth="180">
+                            <Label text="Total Bookings" styleClass="subtle-text"/>
+                            <Label fx:id="statTotalBookings" styleClass="page-title"/>
+                        </VBox>
+                        <VBox styleClass="card" alignment="CENTER" prefWidth="180">
+                            <Label text="Confirmed" styleClass="subtle-text"/>
+                            <Label fx:id="statConfirmed" styleClass="page-title"/>
+                        </VBox>
+                        <VBox styleClass="card" alignment="CENTER" prefWidth="180">
+                            <Label text="Cancelled" styleClass="subtle-text"/>
+                            <Label fx:id="statCancelled" styleClass="page-title"/>
+                        </VBox>
+                        <VBox styleClass="card" alignment="CENTER" prefWidth="180">
+                            <Label text="Total Revenue" styleClass="subtle-text"/>
+                            <Label fx:id="statRevenue" styleClass="page-title"/>
+                        </VBox>
+                    </HBox>
+                    <TableView fx:id="bookingsTable">
+                        <columns>
+                            <TableColumn fx:id="colBookingId" text="Booking ID" prefWidth="90"/>
+                            <TableColumn fx:id="colBookingCustEvent" text="Customer — Event" prefWidth="300"/>
+                            <TableColumn fx:id="colBookingDate" text="Booking Date" prefWidth="150"/>
+                            <TableColumn fx:id="colBookingAmount" text="Amount" prefWidth="100"/>
+                            <TableColumn fx:id="colBookingStatus" text="Status" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>

@@ -1,0 +1,201 @@
+/* ===========================================================
+   Event Ticketing System - JavaFX Stylesheet
+   Palette: deep indigo (#1E2749) + amber ticket accent (#F4A340)
+   =========================================================== */
+
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-background-color: #F6F5F2;
+}
+
+/* ---------- Top bar / navigation ---------- */
+.topbar {
+    -fx-background-color: #1E2749;
+    -fx-padding: 14 24 14 24;
+}
+.topbar .app-title {
+    -fx-text-fill: #F4A340;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+.topbar .nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #E8E6E0;
+    -fx-font-size: 13px;
+    -fx-padding: 8 14 8 14;
+    -fx-cursor: hand;
+    -fx-background-radius: 4;
+}
+.topbar .nav-button:hover {
+    -fx-background-color: #2E3A63;
+    -fx-text-fill: #F4A340;
+}
+.topbar .user-label {
+    -fx-text-fill: #AAB2C8;
+    -fx-font-size: 12px;
+}
+
+/* ---------- Cards ---------- */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #E5E1D8;
+    -fx-border-width: 1;
+    -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(30,39,73,0.08), 8, 0, 0, 2);
+}
+.event-card-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E2749;
+}
+.event-card-meta {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6B7280;
+}
+.event-card-price {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #C9711A;
+}
+.badge {
+    -fx-background-color: #FCEBD5;
+    -fx-text-fill: #C9711A;
+    -fx-padding: 3 10 3 10;
+    -fx-background-radius: 12;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+/* ---------- Headings ---------- */
+.page-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E2749;
+}
+.section-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E2749;
+}
+.subtle-text {
+    -fx-text-fill: #8A8F98;
+    -fx-font-size: 12px;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+    -fx-background-color: #F4A340;
+    -fx-text-fill: #1E2749;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 10 22 10 22;
+    -fx-cursor: hand;
+}
+.btn-primary:hover { -fx-background-color: #E8933A; }
+
+.btn-secondary {
+    -fx-background-color: transparent;
+    -fx-border-color: #1E2749;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-text-fill: #1E2749;
+    -fx-padding: 9 20 9 20;
+    -fx-cursor: hand;
+}
+.btn-secondary:hover { -fx-background-color: #EEECE6; }
+
+.btn-danger {
+    -fx-background-color: #E24C4B;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16 8 16;
+    -fx-cursor: hand;
+}
+.btn-danger:hover { -fx-background-color: #CB3F3E; }
+
+.btn-link {
+    -fx-background-color: transparent;
+    -fx-text-fill: #C9711A;
+    -fx-underline: false;
+    -fx-cursor: hand;
+    -fx-padding: 4 4 4 4;
+}
+.btn-link:hover { -fx-text-fill: #1E2749; }
+
+/* ---------- Form fields ---------- */
+.text-field, .password-field, .text-area, .combo-box, .date-picker {
+    -fx-background-color: #FBFAF8;
+    -fx-border-color: #DAD6CC;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+    -fx-font-size: 13px;
+}
+.text-field:focused, .password-field:focused, .combo-box:focused {
+    -fx-border-color: #F4A340;
+}
+
+/* ---------- Auth screens ---------- */
+.auth-container {
+    -fx-background-color: #1E2749;
+}
+.auth-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-padding: 40;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 20, 0, 0, 8);
+}
+.auth-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E2749;
+}
+.error-text {
+    -fx-text-fill: #E24C4B;
+    -fx-font-size: 12px;
+}
+.success-text {
+    -fx-text-fill: #2E9E6D;
+    -fx-font-size: 12px;
+}
+
+/* ---------- Tables ---------- */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #E5E1D8;
+}
+.table-view .column-header-background {
+    -fx-background-color: #1E2749;
+}
+.table-view .column-header-background .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.table-row-cell:odd { -fx-background-color: #FAF9F6; }
+.table-row-cell:selected { -fx-background-color: #FCEBD5; }
+
+/* ---------- Status pills ---------- */
+.status-confirmed { -fx-text-fill: #2E9E6D; -fx-font-weight: bold; }
+.status-pending { -fx-text-fill: #C9711A; -fx-font-weight: bold; }
+.status-cancelled { -fx-text-fill: #E24C4B; -fx-font-weight: bold; }
+
+/* ---------- Seat picker ---------- */
+.seat-btn {
+    -fx-background-radius: 4;
+    -fx-min-width: 46;
+    -fx-min-height: 34;
+    -fx-font-size: 11px;
+    -fx-cursor: hand;
+}
+.seat-available {
+    -fx-background-color: #E9F6EF;
+    -fx-border-color: #2E9E6D;
+    -fx-text-fill: #2E9E6D;
+}
+.seat-selected {
+    -fx-background-color: #F4A340;
+    -fx-border-color: #C9711A;
+    -fx-text-fill: #1E2749;
+}
