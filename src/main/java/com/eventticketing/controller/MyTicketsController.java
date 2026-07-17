@@ -22,6 +22,7 @@ import java.util.Optional;
 public class MyTicketsController {
 
     @FXML private VBox ticketsBox;
+    @FXML private Button cartButton;
 
     private final BookingDAO bookingDAO = new BookingDAO();
     private static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("MMM d, yyyy h:mm a");
@@ -29,6 +30,17 @@ public class MyTicketsController {
     @FXML
     public void initialize() {
         loadTickets();
+        updateCartButton();
+    }
+
+    private void updateCartButton() {
+        int count = SessionManager.getInstance().getCart().size();
+        cartButton.setText(count > 0 ? "🛒 Cart (" + count + ")" : "🛒 Cart");
+    }
+
+    @FXML
+    private void goToCart() {
+        SceneManager.switchTo("/com/eventticketing/view/Cart.fxml", "Your Cart");
     }
 
     private void loadTickets() {

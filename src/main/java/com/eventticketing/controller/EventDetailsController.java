@@ -30,6 +30,7 @@ public class EventDetailsController {
     @FXML private Label noSeatsLabel;
     @FXML private Label selectedCountLabel;
     @FXML private Label totalLabel;
+    @FXML private Button cartButton;
 
     private final EventDAO eventDAO = new EventDAO();
     private Event currentEvent;
@@ -49,6 +50,12 @@ public class EventDetailsController {
 
         loadSeats();
         updateSummary();
+        updateCartButton();
+    }
+
+    private void updateCartButton() {
+        int count = SessionManager.getInstance().getCart().size();
+        cartButton.setText(count > 0 ? "🛒 Cart (" + count + ")" : "🛒 Cart");
     }
 
     private void loadSeats() {
@@ -111,6 +118,11 @@ public class EventDetailsController {
     @FXML
     private void goToMyTickets() {
         SceneManager.switchTo("/com/eventticketing/view/MyTickets.fxml", "My Tickets");
+    }
+
+    @FXML
+    private void goToCart() {
+        SceneManager.switchTo("/com/eventticketing/view/Cart.fxml", "Your Cart");
     }
 
     @FXML

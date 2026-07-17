@@ -2,7 +2,6 @@ package com.eventticketing.controller;
 
 import com.eventticketing.dao.UserDAO;
 import com.eventticketing.util.SceneManager;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -10,8 +9,7 @@ import javafx.scene.control.TextField;
 
 public class RegisterController {
 
-    @FXML
-    private TextField nameField;
+    @FXML private TextField nameField;
     @FXML private TextField emailField;
     @FXML private TextField phoneField;
     @FXML private PasswordField passwordField;

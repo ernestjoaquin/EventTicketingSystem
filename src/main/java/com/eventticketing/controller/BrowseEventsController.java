@@ -25,6 +25,7 @@ public class BrowseEventsController {
     @FXML private TextField searchField;
     @FXML private ComboBox<Category> categoryCombo;
     @FXML private Label userLabel;
+    @FXML private Button cartButton;
 
     private final EventDAO eventDAO = new EventDAO();
     private final CategoryDAO categoryDAO = new CategoryDAO();
@@ -42,6 +43,12 @@ public class BrowseEventsController {
         categoryCombo.setPromptText("All Categories");
 
         loadEvents(eventDAO.getAllEvents());
+        updateCartButton();
+    }
+
+    private void updateCartButton() {
+        int count = SessionManager.getInstance().getCart().size();
+        cartButton.setText(count > 0 ? "🛒 Cart (" + count + ")" : "🛒 Cart");
     }
 
     @FXML
@@ -115,6 +122,11 @@ public class BrowseEventsController {
     @FXML
     private void goToMyTickets() {
         SceneManager.switchTo("/com/eventticketing/view/MyTickets.fxml", "My Tickets");
+    }
+
+    @FXML
+    private void goToCart() {
+        SceneManager.switchTo("/com/eventticketing/view/Cart.fxml", "Your Cart");
     }
 
     @FXML

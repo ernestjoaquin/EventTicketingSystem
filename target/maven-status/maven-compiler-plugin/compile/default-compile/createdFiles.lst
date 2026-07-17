@@ -6,6 +6,7 @@ com\eventticketing\dao\VenueDAO.class
 com\eventticketing\controller\AdminDashboardController$4.class
 com\eventticketing\dao\EventDAO.class
 com\eventticketing\dao\BookingDAO.class
+com\eventticketing\db\DBConnection.class
 com\eventticketing\Main.class
 com\eventticketing\model\Customer.class
 com\eventticketing\model\Event.class
@@ -22,7 +23,6 @@ com\eventticketing\controller\BrowseEventsController.class
 com\eventticketing\controller\LoginController.class
 com\eventticketing\controller\MyTicketsController.class
 com\eventticketing\controller\EventDetailsController.class
-com\eventticketing\datastore\DataStore.class
 com\eventticketing\controller\AdminDashboardController$1.class
 com\eventticketing\controller\RegisterController.class
 com\eventticketing\model\Category.class

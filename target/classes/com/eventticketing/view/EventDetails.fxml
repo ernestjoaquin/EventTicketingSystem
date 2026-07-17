@@ -17,6 +17,7 @@
             <Region HBox.hgrow="ALWAYS"/>
             <Button text="Browse Events" styleClass="nav-button" onAction="#goToBrowse"/>
             <Button text="My Tickets" styleClass="nav-button" onAction="#goToMyTickets"/>
+            <Button fx:id="cartButton" text="🛒 Cart" styleClass="nav-button" onAction="#goToCart"/>
             <Button text="Logout" styleClass="nav-button" onAction="#handleLogout"/>
         </HBox>
     </top>

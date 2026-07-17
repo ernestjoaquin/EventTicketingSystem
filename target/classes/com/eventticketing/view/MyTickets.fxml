@@ -17,6 +17,7 @@
                 <Region HBox.hgrow="ALWAYS"/>
                 <Button text="Browse Events" styleClass="nav-button" onAction="#goToBrowse"/>
                 <Button text="My Tickets" styleClass="nav-button" onAction="#refreshView"/>
+                <Button fx:id="cartButton" text="🛒 Cart" styleClass="nav-button" onAction="#goToCart"/>
                 <Button text="Logout" styleClass="nav-button" onAction="#handleLogout"/>
             </HBox>
             <Label text="My Tickets" styleClass="page-title" style="-fx-padding: 18 24 10 24;"/>
