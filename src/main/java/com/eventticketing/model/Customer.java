@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Customer extends User {
+    private static final long serialVersionUID = 1L;
+
     private int customerId;
 
     public Customer() { super(); }

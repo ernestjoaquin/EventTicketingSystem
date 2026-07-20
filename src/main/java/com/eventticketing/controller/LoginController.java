@@ -34,7 +34,8 @@ public class LoginController {
             return;
         }
 
-        SessionManager.getInstance().setCurrentUser(user);
+        // Sets the in-memory user AND writes the serialized session.dat file.
+        SessionManager.getInstance().login(user);
 
         if (user instanceof Admin) {
             SceneManager.switchTo("/com/eventticketing/view/AdminDashboard.fxml", "Admin Dashboard");

@@ -1,9 +1,14 @@
 package com.eventticketing.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-/** Abstract base class, mirrors <<abstract>> User in the class diagram. */
-public abstract class User {
+/** Abstract base class, mirrors <<abstract>> User in the class diagram.
+ *  Implements Serializable so a logged-in user can be written to / read
+ *  back from the session.dat file used by SessionManager. */
+public abstract class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     protected int userId;
     protected String name;
     protected String email;

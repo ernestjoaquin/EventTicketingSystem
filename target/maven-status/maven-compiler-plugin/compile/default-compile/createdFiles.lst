@@ -11,12 +11,14 @@ com\eventticketing\Main.class
 com\eventticketing\model\Customer.class
 com\eventticketing\model\Event.class
 com\eventticketing\dao\UserDAO.class
+com\eventticketing\util\SessionStore.class
 com\eventticketing\controller\AdminDashboardController$2.class
 com\eventticketing\model\Payment.class
 com\eventticketing\model\Seat.class
 com\eventticketing\model\Venue.class
 com\eventticketing\controller\AdminDashboardController$3.class
 com\eventticketing\util\SessionManager.class
+com\eventticketing\util\FileSessionStore.class
 com\eventticketing\model\User.class
 com\eventticketing\model\Admin.class
 com\eventticketing\controller\BrowseEventsController.class
