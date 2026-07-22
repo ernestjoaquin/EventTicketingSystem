@@ -109,3 +109,64 @@ future multi-device version) without changing a single line of
 `SessionManager`, `LoginController`, or any other class that depends on
 session state.
 
+## Design Patterns Applied
+
+Three design patterns were added on top of the existing architecture — one creational, one structural, and one behavioral.
+
+### 1. Factory Method (Creational)
+**Class:** `factory/UserFactory.java`, used by `dao/UserDAO.java`
+
+Turning a raw database row into the right `User` subclass (`Customer` vs
+`Admin`) used to be an inline `if/else` on the `role` column, living
+directly inside `UserDAO.mapRow()`. `UserFactory.createUser(role, ...)`
+now owns that decision as a single static factory method.
+
+**Benefit:** `UserDAO` (and any future caller) doesn't need to know how
+many `User` subclasses exist or how to tell them apart — it just asks the
+factory for a `User` and gets the correct concrete type back. Adding a
+new role later (e.g. `ORGANIZER`) only means editing `UserFactory`,
+not every place a `User` gets constructed.
+
+### 2. Facade (Structural)
+**Classes:** `facade/BookingFacade.java`, `facade/CheckoutResult.java`, used by `controller/CheckoutController.java`
+
+Completing a checkout actually requires coordinating several subsystems:
+validating the cart, calling `BookingDAO.checkout(...)` (which reserves
+seats, runs the payment, and commits the booking), and then clearing the
+session cart. `BookingFacade.completeCheckout(...)` wraps all of that
+behind one method call.
+
+**Benefit:** `CheckoutController` no longer needs to know the correct
+order of operations (checkout *then* clear cart), or which class is
+responsible for which step. The controller shrinks to "call the facade,
+show the result" — the coordination logic is centralized and reusable if
+another screen ever needs to trigger a checkout.
+
+### 3. Strategy (Behavioral)
+**Classes:** `payment/PaymentStrategy.java` (interface), `payment/CreditCardPayment.java`, `payment/DebitCardPayment.java`, `payment/GCashPayment.java`, `payment/PayMayaPayment.java`, `payment/PaymentStrategyFactory.java`, used by `model/Payment.java` and `dao/BookingDAO.java`
+
+The Checkout screen lets a customer pick a payment method (Credit Card,
+Debit Card, GCash, PayMaya), but `Payment.processPayment()` used to run
+one hardcoded simulated charge no matter which method was chosen. Each
+method is now its own `PaymentStrategy` implementation, and `Payment`
+just delegates to whichever strategy it's given.
+
+**Benefit:** The payment *algorithm* varies independently of the code
+that uses it. Adding a new payment method (e.g. bank transfer) means
+adding one new class implementing `PaymentStrategy` — `Payment`,
+`BookingDAO`, and `CheckoutController` don't need to change at all.
+
+## UML Diagrams
+
+ 
+
+### Class Diagram
+![img.png](img.png)
+
+### Use Case Diagram
+![img_2.png](img_2.png)
+### Activity Diagram (Book Tickets)
+![img_3.png](img_3.png)
+### Sequence Diagram (Checkout)
+![img_4.png](img_4.png)
+
